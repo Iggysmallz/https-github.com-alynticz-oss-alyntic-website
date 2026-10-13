@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Why Cape Town | Alyntic</title>
+<meta name="description" content="See your time-zone overlap with Cape Town, estimate your savings, and explore the city our team calls home.">
+<meta property="og:title" content="Why Cape Town | Alyntic">
+<meta property="og:description" content="See your time-zone overlap with Cape Town, estimate your savings, and explore the city our team calls home.">
+<meta property="og:image" content="https://alyntic.co.za/assets/alyntic-logo.jpg">
+<meta name="theme-color" content="#141033">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+<body>
+<header>
+  <nav class="wrap">
+    <a class="brand" href="index.html" aria-label="Alyntic home">
+      <img src="assets/alyntic-mark.png" alt="" width="42" height="42">
+      <span><span class="brand-name">ALYNTIC</span><span class="brand-tag">DISRUPTING TODAY, TRANSFORMING TOMORROW.</span></span>
+    </a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="links">&#9776;</button>
+    <ul class="links" id="links">
+      <li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="why-cape-town.html" aria-current="page">Why Cape Town</a></li><li><a href="projects.html">Projects</a></li>
+      <li><a class="btn btn-primary" href="contact.html">Get a quote</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+<section class="hero page">
+  <img class="bg" src="https://images.unsplash.com/photo-1591205024850-d3420e30469e?auto=format&fit=crop&w=2000&q=70" data-large="https://images.unsplash.com/photo-1591205024850-d3420e30469e?auto=format&fit=crop&w=2000&q=70" alt="Cable car above a sea of clouds toward Lion's Head" loading="eager" data-fallback="assets/cape town 1.jpg">
+  <div class="wrap">
+    <p class="crumbs"><a href="index.html">Home</a> / Why Cape Town</p>
+    <span class="eyebrow">Why Cape Town</span>
+    <h1>The same working day as Europe, at a fraction of the cost</h1>
+    <p class="lede">Check how our hours line up with yours, estimate what you'd save, and take a look around the city our team calls home.</p>
+  </div>
+  <span class="credit">Photo: Thomas Bennie / <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></span>
+</section>
+
+<section id="coverage">
+  <div class="wrap">
+    <div class="head reveal"><span class="eyebrow">Time-zone coverage</span><h2>See exactly when we overlap with your customers</h2>
+      <p class="lede">Each row shows your market's 08:00–17:00 business day, plotted on Cape Town time. Pick a coverage window to see the hours we share.</p></div>
+    <div class="chips" role="group" aria-label="Coverage window">
+      <button class="chip" data-shift="8,17" aria-pressed="true">Day · 08:00–17:00</button>
+      <button class="chip" data-shift="5,14" aria-pressed="false">Early · 05:00–14:00</button>
+      <button class="chip" data-shift="12,21" aria-pressed="false">Late · 12:00–21:00</button>
+    </div>
+    <div class="tz reveal">
+      <div class="tz-scroll"><div class="tz-inner">
+        <div id="tzRows"></div>
+        <div class="axis"><span></span><div class="axis-ticks" id="ticks"></div><span></span></div>
+      </div></div>
+      <div class="legend">
+        <span><i style="background:rgba(163,168,214,.26)"></i>Client business day</span>
+        <span><i style="background:var(--cyan-dim);border:1px solid rgba(19,220,242,.55)"></i>Alyntic coverage</span>
+        <span><i style="background:var(--grad)"></i>Shared hours</span>
+        <span><i style="background:var(--sun);width:3px"></i>Now in Cape Town</span>
+      </div>
+    </div>
+    <p class="hint" style="margin-top:14px">Times follow each city's current daylight-saving rules. Coverage windows are agreed per client.</p>
+  </div>
+</section>
+
+<section class="alt" id="savings">
+  <div class="wrap">
+    <div class="head reveal"><span class="eyebrow">Savings estimator</span><h2>What would a Cape Town team cost you?</h2>
+      <p class="lede">Enter your team size and what one in-house agent costs you per month, all-in. Your estimate is attached to your enquiry if you contact us.</p></div>
+    <div class="grid-2">
+      <form class="card" id="calc" onsubmit="return false">
+        <div class="field"><span class="lab">Your market</span>
+          <div class="chips" role="group" aria-label="Market" style="margin:0">
+            <button type="button" class="chip" data-mkt="UK" aria-pressed="true">United Kingdom</button>
+            <button type="button" class="chip" data-mkt="EU" aria-pressed="false">Europe</button>
+            <button type="button" class="chip" data-mkt="AU" aria-pressed="false">Australia</button>
+          </div></div>
+        <div class="field"><label for="agents">Agents needed <output id="agentsOut" for="agents">10</output></label><input type="range" id="agents" min="1" max="100" value="10"></div>
+        <div class="field"><label for="cost">In-house cost per agent, per month</label>
+          <div class="money"><span id="sym">£</span><input id="cost" inputmode="numeric" value="2,600" aria-describedby="costHint"></div>
+          <span class="hint" id="costHint">Example figure covering salary, taxes, office and tools. Replace it with your own.</span></div>
+      </form>
+      <div class="card" aria-live="polite">
+        <span class="eyebrow">Estimated saving</span>
+        <div class="result-big grad-text" id="saveRange">£124,800 – £187,200</div>
+        <p class="hint" id="saveSub">per year, for a team of 10 agents</p>
+        <div class="bars">
+          <div class="bar-row"><span>In-house today</span><div class="bar"><i class="cur" style="width:100%"></i></div><span class="bar-val" id="curVal">£312,000 / year</span></div>
+          <div class="bar-row"><span>With Alyntic</span><div class="bar"><i class="aly-range" style="width:60%"></i><i class="aly" style="width:40%"></i></div><span class="bar-val" id="alyVal">£124,800 – £187,200 / year</span></div>
+        </div>
+        <a class="btn btn-primary arrow" href="contact.html">Get an exact quote </a>
+        <p class="note">This applies the 40–60% range to your own figures. Your quote depends on channels, hours, volumes and languages.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="city">
+  <div class="wrap">
+    <div class="head reveal"><span class="eyebrow">Our city</span><h2>Life in the Mother City</h2>
+      <p class="lede">Cape Town draws skilled, English-speaking talent from across South Africa. Tap a photo to see it full size.</p></div>
+    <div class="gallery" id="gallery"><button type="button" data-caption="The City Bowl and Table Mountain · Photo: Tobias Reich / Unsplash" aria-label="View larger: The City Bowl and Table Mountain"><img src="https://images.unsplash.com/photo-1580060839134-75a5edca2e99?auto=format&fit=crop&w=1000&q=70" data-large="https://images.unsplash.com/photo-1580060839134-75a5edca2e99?auto=format&fit=crop&w=2000&q=70" alt="Aerial view of Cape Town beneath Table Mountain" loading="lazy" data-fallback="assets/cape town 1.jpg"><span class="cap">The City Bowl and Table Mountain</span></button><button type="button" data-caption="Clifton and the Twelve Apostles · Photo: kylefromthenorth / Unsplash" aria-label="View larger: Clifton and the Twelve Apostles"><img src="https://images.unsplash.com/photo-1576485375217-d6a95e34d043?auto=format&fit=crop&w=1000&q=70" data-large="https://images.unsplash.com/photo-1576485375217-d6a95e34d043?auto=format&fit=crop&w=2000&q=70" alt="Clifton beach below the Twelve Apostles mountain range" loading="lazy" data-fallback="assets/cape town 1.jpg"><span class="cap">Clifton and the Twelve Apostles</span></button><button type="button" data-caption="Cable car above the clouds, Lion's Head · Photo: Thomas Bennie / Unsplash" aria-label="View larger: Cable car above the clouds, Lion's Head"><img src="https://images.unsplash.com/photo-1591205024850-d3420e30469e?auto=format&fit=crop&w=1000&q=70" data-large="https://images.unsplash.com/photo-1591205024850-d3420e30469e?auto=format&fit=crop&w=2000&q=70" alt="Cable car above a sea of clouds toward Lion's Head" loading="lazy" data-fallback="assets/cape town 1.jpg"><span class="cap">Cable car above the clouds, Lion's Head</span></button><button type="button" data-caption="Colourful beach huts on the False Bay coast · Photo: Arno Smit / Unsplash" aria-label="View larger: Colourful beach huts on the False Bay coast"><img src="https://images.unsplash.com/photo-1474874055390-459bc92357f3?auto=format&fit=crop&w=1000&q=70" data-large="https://images.unsplash.com/photo-1474874055390-459bc92357f3?auto=format&fit=crop&w=2000&q=70" alt="Row of colourful beach huts" loading="lazy" data-fallback="assets/cape town 1.jpg"><span class="cap">Colourful beach huts on the False Bay coast</span></button><button type="button" data-caption="African penguins on the Cape coast · Photo: Casey Allen / Unsplash" aria-label="View larger: African penguins on the Cape coast"><img src="https://images.unsplash.com/photo-1496497243327-9dccd845c35f?auto=format&fit=crop&w=1000&q=70" data-large="https://images.unsplash.com/photo-1496497243327-9dccd845c35f?auto=format&fit=crop&w=2000&q=70" alt="African penguins on the shore beside granite boulders" loading="lazy" data-fallback="assets/cape town 1.jpg"><span class="cap">African penguins on the Cape coast</span></button><button type="button" data-caption="Cape Town from above · Photo: Sharaan Muruvan / Unsplash" aria-label="View larger: Cape Town from above"><img src="https://images.unsplash.com/photo-1591742708307-ce49d19450d4?auto=format&fit=crop&w=1000&q=70" data-large="https://images.unsplash.com/photo-1591742708307-ce49d19450d4?auto=format&fit=crop&w=2000&q=70" alt="Aerial view of Cape Town and the coastline" loading="lazy" data-fallback="assets/cape town 1.jpg"><span class="cap">Cape Town from above</span></button><button type="button" data-caption="Sunset on the Atlantic seaboard · Photo: Brent Ninaber / Unsplash" aria-label="View larger: Sunset on the Atlantic seaboard"><img src="https://images.unsplash.com/photo-1563656157432-67560011e209?auto=format&fit=crop&w=1000&q=70" data-large="https://images.unsplash.com/photo-1563656157432-67560011e209?auto=format&fit=crop&w=2000&q=70" alt="Sandy beach at sunset" loading="lazy" data-fallback="assets/cape town 1.jpg"><span class="cap">Sunset on the Atlantic seaboard</span></button><button type="button" data-caption="Where the mountain meets the sea · Photo: Tobias Reich / Unsplash" aria-label="View larger: Where the mountain meets the sea"><img src="https://images.unsplash.com/photo-1581596326248-f55ac7852760?auto=format&fit=crop&w=1000&q=70" data-large="https://images.unsplash.com/photo-1581596326248-f55ac7852760?auto=format&fit=crop&w=2000&q=70" alt="Rocky mountain beside the sea" loading="lazy" data-fallback="assets/cape town 1.jpg"><span class="cap">Where the mountain meets the sea</span></button></div>
+  </div>
+</section>
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <img src="" alt="">
+  <div class="lb-bar"><p id="lbCap"></p><div class="lb-btns">
+    <button id="lbPrev" aria-label="Previous photo">&#8592;</button><button id="lbNext" aria-label="Next photo">&#8594;</button><button id="lbClose" aria-label="Close">&#10005;</button>
+  </div></div>
+</div>
+<section><div class="wrap"><div class="cta-band reveal">
+  <div><h2>Ready to build your Cape Town team?</h2><p>Tell us what you need and we'll reply within 4 hours on business days.</p></div>
+  <a class="btn arrow" href="contact.html">Get a quote </a>
+</div></div></section>
+</main>
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <img src="assets/alyntic-logo.jpg" alt="Alyntic logo: Disrupting today, transforming tomorrow">
+        <p>Customer support, lead generation and back-office teams, run from Cape Town for clients in South Africa, the UK, Europe and Australia.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul><li><a href="index.html">Home</a></li><li><a href="services.html">Services</a></li><li><a href="why-cape-town.html">Why Cape Town</a></li><li><a href="projects.html">Projects</a></li><li><a href="contact.html">Contact</a></li></ul>
+      </div>
+      <div>
+        <h4>Talk to us</h4>
+        <ul>
+          <li><a href="tel:+27731369654">+27 73 136 9654</a></li>
+          <li><a href="mailto:alynticz@gmail.com">alynticz@gmail.com</a></li>
+          <li><a href="https://wa.me/27731369654" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li>Cape Town, South Africa</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>&copy; <span class="year">2026</span> Alyntic (Pty) Ltd. Proudly Cape Town, globally focused.</span>
+      <span>Cape Town photography via <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a></span>
+    </div>
+  </div>
+</footer>
+<a class="wa" href="https://wa.me/27731369654?text=Hi%20Alyntic%2C%20I%27d%20like%20to%20find%20out%20more." target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.7-1.2 2.2 2.2 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3Z"/></svg>
+  <span>WhatsApp us</span>
+</a>
+<script src="script.js"></script>
+</body>
+</html>
